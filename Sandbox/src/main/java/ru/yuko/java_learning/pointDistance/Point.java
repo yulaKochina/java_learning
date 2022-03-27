@@ -1,4 +1,4 @@
-package ru.yuko.java_learning.pointDistanсe;
+package ru.yuko.java_learning.pointDistance;
 
 public class Point {
     public double x;
