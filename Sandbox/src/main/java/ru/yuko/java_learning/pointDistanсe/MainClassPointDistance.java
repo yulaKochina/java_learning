@@ -1,4 +1,4 @@
-package ru.yuko.java_learning.pointDistanse;
+package ru.yuko.java_learning.pointDistanсe;
 
 public class MainClassPointDistance {
     public static void main(String[] args) {
