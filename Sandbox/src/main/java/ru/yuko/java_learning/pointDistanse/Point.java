@@ -1,4 +1,4 @@
-package ru.yuko.java_learning.task2;
+package ru.yuko.java_learning.pointDistanse;
 
 public class Point {
     public double x;
@@ -10,7 +10,7 @@ public class Point {
     }
 
     public double distance(Point p2){
-        double d = Math.sqrt(Math.abs(((this.x - p2.x) * 2) + ((this.y - p2.y) * 2)));
+        double d = Math.sqrt(Math.sqrt(p2.x - this.x ) + Math.sqrt(p2.y - this.y ));
         return d;
     }
 }
