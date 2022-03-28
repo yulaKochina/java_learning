@@ -10,17 +10,17 @@ public class MyFirstProgram {
         String txt = "Yuliya";
         text(txt);
 
-        // Определина значения переменных
+        // Определила значения переменных
+        Square s = new Square(4);
         double a = 3;
         double b = 5;
-        String area = "\nПлощадь прямоугольника со сторонами " + a + " и " + b + " равна ";
 
         // Вычисление и вывод площади через выражения
-        double s = a * b;
-        System.out.println("\n(площадь через выражение) " + area + "= " + s);
+        double sRictangle = a * b;
+        System.out.println("\n(площадь прямоугольника через выражение) " + "\nПлощадь прямоугольника со сторонами " + a + " и " + b + " равна " + "= " + sRictangle);
 
         // Вычисление и вывод площади через функцию
-        System.out.println("\n(площадь через функцию) " + area + "= " + area(a,b));
+        System.out.println("\n(площадь квадрата через функцию) " + "\nПлощадь квадрата со стороной " + s.l + " равна " + "= " + s.area());
     }
 
     public static void text( String txt){
@@ -30,4 +30,6 @@ public class MyFirstProgram {
     public static double area(double a, double b){
         return a * b;
     }
+
+
 }
