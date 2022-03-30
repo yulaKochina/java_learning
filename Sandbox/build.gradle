@@ -2,3 +2,10 @@ apply plugin: 'java'
 apply plugin: 'application'
 mainClassName = "ru.yuko.java_learning.sandbox.MyFirstProgram"
 mainClassName = "ru.yuko.java_learning.pointDistanсe.MainClassPointDistance"
+
+repositories {
+    mavenCentral()
+}
+dependencies {
+    implementation 'org.testng:testng:7.5'
+}
