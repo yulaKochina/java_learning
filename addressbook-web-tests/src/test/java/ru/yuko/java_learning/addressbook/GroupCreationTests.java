@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 public class GroupCreationTests extends TestBase{
 
   @Test
-  public void testGroupCreation() throws Exception {
+  public void testGroupCreation() {
     gotoGroupPage();
     initGroupCreation();
     fillGroupForm(new GroupData("test11", "test22", "test33"));
