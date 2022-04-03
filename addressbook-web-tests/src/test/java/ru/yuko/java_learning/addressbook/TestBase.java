@@ -61,6 +61,14 @@ public class TestBase {
       wd.findElement(By.linkText("groups")).click();
     }
 
+    protected void deleteGroup() {
+      wd.findElement(By.name("delete")).click();
+    }
+
+    protected void selectGroupChekbox() {
+      wd.findElement(By.xpath("//span[1]/input")).click();
+    }
+
     @AfterMethod(alwaysRun = true)
     public void tearDown() throws Exception {
       logout();
