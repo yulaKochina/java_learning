@@ -15,17 +15,12 @@ public class ContactCreationTests {
     wb = new ChromeDriver();
     wb.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     wb.get("http://localhost/addressbook/");
+    login("admin", "secret");
   }
 
   @Test
   public void testContactCreation() throws Exception {
-    wb.findElement(By.name("user")).click();
-    wb.findElement(By.name("user")).clear();
-    wb.findElement(By.name("user")).sendKeys("admin");
-    wb.findElement(By.name("pass")).click();
-    wb.findElement(By.name("pass")).clear();
-    wb.findElement(By.name("pass")).sendKeys("secret");
-    wb.findElement(By.xpath("//input[@value='Login']")).click();
+
     wb.findElement(By.linkText("add new")).click();
     wb.findElement(By.name("firstname")).click();
     wb.findElement(By.name("firstname")).clear();
@@ -100,11 +95,26 @@ public class ContactCreationTests {
     wb.findElement(By.name("notes")).sendKeys("Add new contact");
     wb.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
     wb.findElement(By.linkText("home")).click();
+
+  }
+
+  private void logout() {
     wb.findElement(By.linkText("Logout")).click();
+  }
+
+  private void login(String username, String password) {
+    wb.findElement(By.name("user")).click();
+    wb.findElement(By.name("user")).clear();
+    wb.findElement(By.name("user")).sendKeys(username);
+    wb.findElement(By.name("pass")).click();
+    wb.findElement(By.name("pass")).clear();
+    wb.findElement(By.name("pass")).sendKeys(password);
+    wb.findElement(By.xpath("//input[@value='Login']")).click();
   }
 
   @AfterMethod(alwaysRun = true)
   public void tearDown() throws Exception {
+    logout();
     wb.quit();
   }
 }
