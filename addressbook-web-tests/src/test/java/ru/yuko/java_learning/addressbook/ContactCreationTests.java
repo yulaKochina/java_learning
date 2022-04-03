@@ -20,8 +20,22 @@ public class ContactCreationTests {
 
   @Test
   public void testContactCreation() throws Exception {
+    gotoPageCreationContact();
+    fillContactForm();
+    saveContact();
+    gotoPageHome();
 
-    wb.findElement(By.linkText("add new")).click();
+  }
+
+  private void gotoPageHome() {
+    wb.findElement(By.linkText("home")).click();
+  }
+
+  private void saveContact() {
+    wb.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+  }
+
+  private void fillContactForm() {
     wb.findElement(By.name("firstname")).click();
     wb.findElement(By.name("firstname")).clear();
     wb.findElement(By.name("firstname")).sendKeys("Petr");
@@ -93,9 +107,10 @@ public class ContactCreationTests {
     wb.findElement(By.name("notes")).click();
     wb.findElement(By.name("notes")).clear();
     wb.findElement(By.name("notes")).sendKeys("Add new contact");
-    wb.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
-    wb.findElement(By.linkText("home")).click();
+  }
 
+  private void gotoPageCreationContact() {
+    wb.findElement(By.linkText("add new")).click();
   }
 
   private void logout() {
