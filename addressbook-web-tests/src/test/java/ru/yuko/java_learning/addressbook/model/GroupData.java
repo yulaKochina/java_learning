@@ -1,4 +1,4 @@
-package ru.yuko.java_learning.addressbook;
+package ru.yuko.java_learning.addressbook.model;
 
 public class GroupData {
     private final String groupName;
