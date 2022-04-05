@@ -132,7 +132,6 @@ public class ApplicationManager {
       wd.findElement(By.name("homepage")).sendKeys(contactData.getHomepage());
       birthDayData(new BirthDatData(contactData.getBday(), contactData.getBmonth(), contactData.getByear()));
       anniversaryDayDAta(new AnniversaryDayData(contactData.getAday(), contactData.getAmonth(), contactData.getAyear()));
-      selectGroup(contactData.getGroup());
       wd.findElement(By.name("address2")).click();
       wd.findElement(By.name("address2")).clear();
       wd.findElement(By.name("address2")).sendKeys(contactData.getAddress2());
@@ -142,11 +141,6 @@ public class ApplicationManager {
       wd.findElement(By.name("notes")).click();
       wd.findElement(By.name("notes")).clear();
       wd.findElement(By.name("notes")).sendKeys(contactData.getNotes());
-    }
-
-    public void selectGroup(String group) {
-      wd.findElement(By.name("new_group")).click();
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(group);
     }
 
     public void anniversaryDayDAta(AnniversaryDayData anniversaryDayData) {
