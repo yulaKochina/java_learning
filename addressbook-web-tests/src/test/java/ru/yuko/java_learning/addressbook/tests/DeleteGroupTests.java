@@ -6,7 +6,8 @@ public class DeleteGroupTests extends TestBase {
 
   @Test
   public void testDeleteGroupTests()  {
-    app.selectGroupChekbox();
-    app.deleteGroup();
+    app.getNavigationHelper().gotoGroupPage();
+    app.getGroupHelper().selectGroupChekbox();
+    app.getGroupHelper().deleteGroup();
   }
 }
