@@ -35,4 +35,12 @@ public class GroupHelper extends BaseHelper {
     public void selectGroupCheckbox() {
         click(By.xpath("//span[1]/input"));
     }
+
+    public void initGroupModification() {
+        click(By.xpath("//input[6]"));
+    }
+
+    public void submitGroupModification() {
+        click(By.name("update"));
+    }
 }

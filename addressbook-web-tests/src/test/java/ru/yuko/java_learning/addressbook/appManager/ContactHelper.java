@@ -55,4 +55,16 @@ public class ContactHelper extends BaseHelper {
         new Select(wd.findElement(By.name("bmonth"))).selectByVisibleText(birthDatData.getBmonth());
         fieldFill(By.name("byear"), birthDatData.getByear());
     }
+
+    public void selectContact() {
+        click(By.name("selected[]"));
+    }
+
+    public void contactDelete() {
+        click(By.xpath("//input[@value='Delete']"));
+    }
+
+    public void acceptDelete() {
+        acceptDel();
+    }
 }
