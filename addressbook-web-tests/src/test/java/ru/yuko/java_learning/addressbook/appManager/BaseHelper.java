@@ -19,10 +19,10 @@ public class BaseHelper {
     protected void fieldFill(By locator, String text) {
         click(locator);
         wd.findElement(locator).clear();
-      wd.findElement(locator).sendKeys(text);
+        wd.findElement(locator).sendKeys(text);
     }
 
-    protected  void  acceptDel(){
+    protected void acceptDel() {
         wd.switchTo().alert().accept();
     }
 

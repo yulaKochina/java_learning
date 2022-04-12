@@ -17,7 +17,7 @@ public class ContactHelper extends BaseHelper {
         click(By.xpath("//div[@id='content']/form/input[21]"));
     }
 
-    public void fillContactForm(ContactData contactData) {
+    public void fillContactForm(ContactData contactData, GroupName groupName) {
         fieldFill(By.name("firstname"), contactData.getFirstName());
         fieldFill(By.name("middlename"), contactData.getMiddleName());
         fieldFill(By.name("lastname"), contactData.getLastName());
@@ -35,9 +35,17 @@ public class ContactHelper extends BaseHelper {
         fieldFill(By.name("homepage"), contactData.getHomePage());
         birthDayData(new BirthDatData(contactData.getBday(), contactData.getBmonth(), contactData.getByear()));
         anniversaryDayDAta(new AnniversaryDayData(contactData.getAday(), contactData.getAmonth(), contactData.getAyear()));
+        selectGroup(new GroupName(groupName.getGroupName()));
         fieldFill(By.name("address2"), contactData.getAddress2());
         fieldFill(By.name("phone2"), contactData.getHomePhone2());
         fieldFill(By.name("notes"), contactData.getNotes());
+    }
+
+    private void selectGroup(GroupName groupName) {
+        if(groupName.getGroupName() != null){
+            click(By.name("new_group"));
+            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(groupName.getGroupName());
+        }
     }
 
     public void anniversaryDayDAta(AnniversaryDayData anniversaryDayData) {
@@ -76,10 +84,9 @@ public class ContactHelper extends BaseHelper {
         click(By.xpath("//input[22]"));
     }
 
-    public void creationContact(ContactData contactData) {
-        fillContactForm(contactData);
+    public void creationContact(ContactData contactData, GroupName groupName) {
+        fillContactForm(contactData,groupName);
         saveContact();
-
     }
 
     public boolean isThereContactPresent() {

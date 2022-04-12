@@ -26,7 +26,7 @@ public class ContactData {
     private final String homePhone2;
     private final String notes;
 
-    public ContactData(String firstName, String middleName, String lastName, String nickName, String title, String company, String address, String homePhone, String mobilePhone, String workPhone, String faxPhone, String email, String email2, String email3, String homePage, String bday, String bmonth, String byear, String aday, String amonth, String ayear, String address2, String homePhone2, String notes) {
+    public ContactData(String firstName, String middleName, String lastName, String nickName, String title, String company, String address, String homePhone, String mobilePhone, String workPhone, String faxPhone, String email, String email2, String email3, String homePage, String bday, String bmonth, String byear, String aday, String amonth, String ayear, String group, String address2, String homePhone2, String notes) {
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;

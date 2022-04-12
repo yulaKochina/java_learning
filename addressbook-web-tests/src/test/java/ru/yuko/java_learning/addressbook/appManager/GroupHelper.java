@@ -55,4 +55,11 @@ public class GroupHelper extends BaseHelper {
         return isElementPresent(By.xpath("//span[1]/input"));
 
     }
+
+    public String getNameGroup() {
+        wd.findElement(By.linkText("groups")).click();
+        click(By.xpath("//span[1]/input"));
+        click(By.xpath("//input[6]"));
+        return wd.findElement(By.name("group_name")).getAttribute( "value" );
+    }
 }
