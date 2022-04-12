@@ -33,7 +33,7 @@ public class GroupHelper extends BaseHelper {
     }
 
     public void selectGroupCheckbox() {
-        click(By.xpath("//span[1]/input"));
+        click(By.name("selected[]"));
     }
 
     public void initGroupModification() {
@@ -61,5 +61,9 @@ public class GroupHelper extends BaseHelper {
         click(By.xpath("//span[1]/input"));
         click(By.xpath("//input[6]"));
         return wd.findElement(By.name("group_name")).getAttribute( "value" );
+    }
+
+    public int getGroupCount() {
+       return wd.findElements(By.name("selected[]")).size();
     }
 }

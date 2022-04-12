@@ -29,8 +29,8 @@ public class ApplicationManager {
         }else if(browser.equals(BrowserType.IE)){
             wd = new InternetExplorerDriver();
         }
-        wd.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        wd.get("http://localhost/addressbook/group.php");
+        wd.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        wd.get("http://localhost/addressbook/");
         groupHelper = new GroupHelper(wd);
         contactHelper = new ContactHelper(wd);
         navigationHelper = new NavigationHelper(wd);
