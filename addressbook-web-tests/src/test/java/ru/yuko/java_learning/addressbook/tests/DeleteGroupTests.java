@@ -4,6 +4,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.yuko.java_learning.addressbook.model.GroupData;
 
+import java.util.List;
+
 public class DeleteGroupTests extends TestBase {
 
   @Test
@@ -12,11 +14,15 @@ public class DeleteGroupTests extends TestBase {
     if(!app.getGroupHelper().isThereGroupPresent()){
       app.getGroupHelper().createGroup(new GroupData("test11", "test22", "test33"));
     }
-    int before = app.getGroupHelper().getGroupCount();
-    app.getGroupHelper().selectGroupCheckbox();
+    app.getNavigationHelper().gotoGroupPage();
+    List<GroupData> before = app.getGroupHelper().getGroupList();
+    app.getGroupHelper().selectGroupCheckbox(before.size()-1);
     app.getGroupHelper().deleteGroup();
     app.getGroupHelper().returnToGroupPage();
-    int after = app.getGroupHelper().getGroupCount();
-    Assert.assertEquals(after, before-1);
+    List<GroupData> after = app.getGroupHelper().getGroupList();
+    Assert.assertEquals(after.size(), before.size()-1);
+
+    before.remove(before.size()-1);
+      Assert.assertEquals(after, before);
   }
 }
