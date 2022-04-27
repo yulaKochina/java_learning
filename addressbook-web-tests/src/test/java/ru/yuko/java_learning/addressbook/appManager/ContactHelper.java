@@ -2,10 +2,15 @@ package ru.yuko.java_learning.addressbook.appManager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import ru.yuko.java_learning.addressbook.model.AnniversaryDayData;
 import ru.yuko.java_learning.addressbook.model.BirthDatData;
 import ru.yuko.java_learning.addressbook.model.ContactData;
+import ru.yuko.java_learning.addressbook.model.GroupData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactHelper extends BaseHelper {
 
@@ -91,5 +96,24 @@ public class ContactHelper extends BaseHelper {
 
     public boolean isThereContactPresent() {
         return isElementPresent(By.xpath("//img[@alt='Edit']"));
+    }
+
+    public List<ContactData> getContactList() {
+        List<ContactData> contacts = new ArrayList<ContactData>();
+        List<WebElement> webElements = wd.findElements(By.xpath("//*[@id='maintable']/tbody/tr[@name='entry']"));
+        for (WebElement element : webElements) {
+            List<WebElement> cells = element.findElements(By.tagName("td"));
+                String contactLastName = cells.get(1).getText();
+                String contactFirstName = cells.get(2).getText();
+                int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+                ContactData contact = new ContactData(id, contactFirstName, null, contactLastName, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+                contacts.add(contact);
+
+        }
+        return contacts;
+    }
+
+    public void selectContactCheckbox(int i) {
+        wd.findElements(By.name("selected[]")).get(i).click();
     }
 }

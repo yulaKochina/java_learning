@@ -1,6 +1,7 @@
 package ru.yuko.java_learning.addressbook.model;
 
 public class ContactData {
+    private int id;
     private final String firstName;
     private final String middleName;
     private final String lastName;
@@ -26,7 +27,36 @@ public class ContactData {
     private final String homePhone2;
     private final String notes;
 
+    public ContactData(int id, String firstName, String middleName, String lastName, String nickName, String title, String company, String address, String homePhone, String mobilePhone, String workPhone, String faxPhone, String email, String email2, String email3, String homePage, String bday, String bmonth, String byear, String aday, String amonth, String ayear, String group, String address2, String homePhone2, String notes) {
+        this.id = id;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.nickName = nickName;
+        this.title = title;
+        this.company = company;
+        this.address = address;
+        this.homePhone = homePhone;
+        this.mobilePhone = mobilePhone;
+        this.workPhone = workPhone;
+        this.faxPhone = faxPhone;
+        this.email = email;
+        this.email2 = email2;
+        this.email3 = email3;
+        this.homePage = homePage;
+        this.bday = bday;
+        this.bmonth = bmonth;
+        this.byear = byear;
+        this.aday = aday;
+        this.amonth = amonth;
+        this.ayear = ayear;
+        this.address2 = address2;
+        this.homePhone2 = homePhone2;
+        this.notes = notes;
+    }
+
     public ContactData(String firstName, String middleName, String lastName, String nickName, String title, String company, String address, String homePhone, String mobilePhone, String workPhone, String faxPhone, String email, String email2, String email3, String homePage, String bday, String bmonth, String byear, String aday, String amonth, String ayear, String group, String address2, String homePhone2, String notes) {
+        this.id = 0;
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
