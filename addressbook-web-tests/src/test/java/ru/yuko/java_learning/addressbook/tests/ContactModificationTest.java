@@ -6,6 +6,9 @@ import ru.yuko.java_learning.addressbook.appManager.GroupName;
 import ru.yuko.java_learning.addressbook.model.ContactData;
 import ru.yuko.java_learning.addressbook.model.GroupData;
 
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 
 public class ContactModificationTest extends TestBase {
@@ -27,11 +30,19 @@ public class ContactModificationTest extends TestBase {
         List<ContactData> before = app.getContactHelper().getContactList();
         app.getContactHelper().selectContactCheckbox(before.size()-1);
         app.getContactHelper().initModificationContact();
-        app.getContactHelper().fillContactForm(new ContactData("Petr", "Petrovich", "Petrov", "Petka", "Petro_file", "PetroCo", "Petrov city, Petrovskaya street , 1/10", "10-10-10", "1023456789", "20-20-20", "30-30-30", "petro@mail.ru", "petya@yandex.ru", "petka@google.com", "www.petr.ru", "1", "June", "1990", "10", "July", "2000", "test11", "Petrov city, Petrovskaya street , 1/10", "10", "Add new contact"), new GroupName(null));
+        ContactData contact = new ContactData(before.get(before.size()-1).getId(), "Petr", "Petrovich", "Petrov", "Petka", "Petro_file", "PetroCo", "Petrov city, Petrovskaya street , 1/10", "10-10-10", "1023456789", "20-20-20", "30-30-30", "petro@mail.ru", "petya@yandex.ru", "petka@google.com", "www.petr.ru", "1", "June", "1990", "10", "July", "2000", "test11", "Petrov city, Petrovskaya street , 1/10", "10", "Add new contact");
+        app.getContactHelper().fillContactForm(contact, new GroupName(null));
         app.getContactHelper().submitContactModification();
         app.getNavigationHelper().gotoPageHome();
         List<ContactData> after = app.getContactHelper().getContactList();
         Assert.assertEquals(after.size(), before.size());
+
+        before.remove(before.size()-1);
+        before.add(contact);
+        Comparator<? super ContactData> byId = (c1, c2) ->Integer.compare(c1.getId(), c2.getId());
+        before.sort(byId);
+        after.sort(byId);
+        Assert.assertEquals(before, after);
     }
 }
 
